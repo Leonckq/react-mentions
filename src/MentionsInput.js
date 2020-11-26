@@ -321,7 +321,8 @@ class MentionsInput extends React.Component {
   }
 
   handlePaste(event) {
-    if (event.target !== this.inputElement) {
+    let target = event.target || event.srcElement
+    if (target !== this.inputElement) {
       return
     }
     if (!this.supportsClipboardActions(event)) {
@@ -355,7 +356,7 @@ class MentionsInput extends React.Component {
 
     const newPlainTextValue = getPlainText(newValue, config)
 
-    const eventMock = { target: { ...event.target, value: newValue } }
+    const eventMock = { target: { ...target, value: newValue } }
 
     this.executeOnChange(
       eventMock,
@@ -394,7 +395,8 @@ class MentionsInput extends React.Component {
   }
 
   handleCopy(event) {
-    if (event.target !== this.inputElement) {
+    let target = event.target || event.srcElement
+    if (target !== this.inputElement) {
       return
     }
     if (!this.supportsClipboardActions(event)) {
@@ -407,7 +409,8 @@ class MentionsInput extends React.Component {
   }
 
   handleCut(event) {
-    if (event.target !== this.inputElement) {
+    let target = event.target || event.srcElement
+    if (target !== this.inputElement) {
       return
     }
     if (!this.supportsClipboardActions(event)) {
@@ -437,7 +440,7 @@ class MentionsInput extends React.Component {
     ].join('')
     const newPlainTextValue = getPlainText(newValue, config)
 
-    const eventMock = { target: { ...event.target, value: newPlainTextValue } }
+    const eventMock = { target: { ...target, value: newPlainTextValue } }
 
     this.executeOnChange(
       eventMock,
